@@ -7,16 +7,15 @@ const GifExpertApp = () => {
     const [categories, setCategories] = useState(['Oue Punch', 'Samurai X', 'Dragon Ball'])
 
     // Funciones
-    const handlerAdd= (e) => {
-        setCategories([...categories, 'The Big Bang Theory']);
-    }; 
+    // const handlerAdd= (e) => {
+    //     setCategories([...categories, 'The Big Bang Theory']);
+    // }; 
 
     return (
         <Fragment>
             <h2>GifExpertApp</h2>
-            <AddCategory />
+            <AddCategory setCategories={ setCategories }/>
             <hr/>
-            <button onClick={ handlerAdd }>Agregar</button>
             <ol>
                 { 
                     categories.map(categoria => { 
