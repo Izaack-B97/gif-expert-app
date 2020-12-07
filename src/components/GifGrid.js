@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import { GifGridItem } from './GifGridItem';
 
 export const GifGrid = ({ category }) => {
@@ -29,13 +29,15 @@ export const GifGrid = ({ category }) => {
 
 
     return (
-        <div>
+        <Fragment>
             <h3>{ category }</h3>
-            {
-                images.map(image => {
-                    return <GifGridItem key={ image.id }{ ...image }/>
-                })
-            }
-        </div>
+            <div className="card-grid">
+                {
+                    images.map(image => {
+                        return <GifGridItem key={ image.id }{ ...image }/>
+                    })
+                }
+            </div>
+        </Fragment>
     )
 }
