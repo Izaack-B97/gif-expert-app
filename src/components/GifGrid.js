@@ -1,43 +1,34 @@
-import React, { useState, useEffect, Fragment } from 'react'
+import React from 'react'
 import { GifGridItem } from './GifGridItem';
+// import {getGifs } from '../helpers/getGifs';
+import { useFetchGifs } from '../hooks/useFetchGifs';
 
 export const GifGrid = ({ category }) => {
     
-    const [images, setImages] = useState([]);
+    // const [images, setImages] = useState([]);
     
-    useEffect(() => {
-        getGifs();  
-    }, []);
+    // useEffect(() => {
+    //     getGifs(category)
+    //         .then(setImages);
+    // }, [category]);
 
-    const getGifs = async () => {
-        const url = 'https://api.giphy.com/v1/gifs/search?q=Mario bros&limit=10&api_key=x4MsguogEaSJ411Yz6Bz1V57Ao10yKYy'; 
-        const resp = await fetch(url);
-        const { data } = await resp.json();
-
-        // console.log(data);
-
-        const giphys = data.map(img => {
-            return {
-                id: img.id,
-                title: img.title,
-                url: img.images?.downsized_medium.url
-            }
-        });
-
-        setImages(giphys);
-    }
-
+    const { loading } = useFetchGifs();
+    console.log(loading);
 
     return (
-        <Fragment>
+        <div>
             <h3>{ category }</h3>
-            <div className="card-grid">
-                {
-                    images.map(image => {
-                        return <GifGridItem key={ image.id }{ ...image }/>
-                    })
-                }
-            </div>
-        </Fragment>
+            { loading ? 'Cargando . . . ' : 'Data cargada' }
+        </div>
+        // <Fragment>
+        //     <h3>{ category }</h3>
+        //     {/* <div className="card-grid">
+        //         {
+        //             images.map(image => {
+        //                 return <GifGridItem key={ image.id }{ ...image }/>
+        //             })
+        //         }
+        //     </div> */}
+        // </Fragment>
     )
 }
