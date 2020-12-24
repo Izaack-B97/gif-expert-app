@@ -8,7 +8,6 @@ export const GifGrid = ({ category }) => {
     console.log(loading);
 
     return (
-       
         <Fragment>
             <h3 className="animate__animated animate__fadeIn">{ category }</h3>
             { loading && <p className="animate__animated animate__flash">Loading . . .</p> }
