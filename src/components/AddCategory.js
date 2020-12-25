@@ -8,13 +8,13 @@ export const AddCategory = ({ setCategories }) => {
     const handleInputChange = (e) => {
         // console.log(e.target.value);
         setInputValue(e.target.value);
-        console.log('handleInputChange llamado')
+        // console.log('handleInputChange llamado', e.target.value);
+        // console.log(e.target.value);
     };
     
     const handleSubmit = (e) => {
         e.preventDefault(); // Cancela el comportamiento por default
-        
-        console.log('handleSubmit', inputValue);
+        // console.log('handleSubmit', inputValue);
 
         if(inputValue.trim().length > 2) {
             setCategories(categories => [ inputValue, ...categories ]);

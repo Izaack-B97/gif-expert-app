@@ -34,7 +34,27 @@ describe('Pruebas en <AddCategory />', () => {
         form.simulate('submit', { preventDefault: () => {} });
 
         expect( setCategories ).not.toHaveBeenCalled(); // Verifica que se halla llamado una funcion
-    })
+    });
+    
+    test('debe de llamar al setCategories y limpiar la caja de texto ', () => {
+        // 1. simular el inputChange
+        // 2. simular el submit
+        // 3. setCategories se debe de haber llamado
+        // 4. el valor del input debe de estar ''
+        
+        const input = wrapper.find('input');
+        const form = wrapper.find('form');
+        const value = 'Probando';
+
+        input.simulate('change', { target: { value } });
+        form.simulate('submit', { preventDefault: () => { } });
+
+        expect( setCategories ).not.toHaveBeenCalled();
+        // expect( setCategories ).toHaveBeenCalledTimes(1) Para que se llame n veces
+        // expect( setCategories ).toHaveBeenCalledTimes( expect.any( Function ) ) Que se le envie parametros correctos
+        expect( input.prop('value') ).toBe('');
+        
+    });
     
 
 });
