@@ -1,3 +1,5 @@
+import '@testing-library/jest-dom';
+
 import { shallow } from "enzyme";
 import { GifGrid } from "../../components/GifGrid";
 import { useFetchGifs } from "../../hooks/useFetchGifs.js";
@@ -41,6 +43,9 @@ describe('Pruebas en <GifGrid />'  , () => {
         const wrapper = shallow( <GifGrid category={ category }/> );
 
         expect( wrapper ).toMatchSnapshot();
+        // Evaluacion de que existen elementos
+        expect( wrapper.find('p').exists() ).toBe( false );
+        expect( wrapper.find('GifGridItem').length ).toBe( gifs.length );
     })
     
 });
